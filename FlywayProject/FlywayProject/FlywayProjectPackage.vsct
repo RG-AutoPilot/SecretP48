@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable">
+
+	<Extern href="stdidcmd.h" />
+	<Extern href="vsshlids.h" />
+
+	<Symbols>
+		<GuidSymbol name="guidFlywayProjectPackageCmdSet" value="{e4b5e2f6-8b5e-4f9b-a7ab-1b602f5ef8c3}">
+			<IDSymbol name="MyMenuGroup" value="0x1020" />
+			<IDSymbol name="Command1" value="0x0100" />
+		</GuidSymbol>
+		<GuidSymbol name="guidFlywayProjectPackage" value="{7ff779d0-07a2-4044-9769-99e4878f56df}" />
+	</Symbols>
+
+	<CommandPlacements>
+		<CommandPlacement guid="guidFlywayProjectPackageCmdSet" id="Command1">
+			<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+			<Priority>0x0100</Priority>
+		</CommandPlacement>
+	</CommandPlacements>
+
+	<Commands package="guidFlywayProjectPackage">
+		<Groups>
+			<Group guid="guidFlywayProjectPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+			</Group>
+		</Groups>
+
+		<Buttons>
+			<Button guid="guidFlywayProjectPackageCmdSet" id="Command1" priority="0x0100" type="Button">
+				<Parent guid="guidFlywayProjectPackageCmdSet" id="MyMenuGroup" />
+				<Strings>
+					<ButtonText>Open Flyway Tool Window</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
+</CommandTable>
