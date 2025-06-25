@@ -1,7 +1,8 @@
 CREATE TABLE [Logistics].[EmployeeTerritories]
 (
 [EmployeeID] [int] NOT NULL,
-[TerritoryID] [nvarchar] (20) NOT NULL
+[TerritoryID] [nvarchar] (20) NOT NULL,
+[Test] [nvarchar] (20) NOT NULL
 )
 GO
 ALTER TABLE [Logistics].[EmployeeTerritories] ADD CONSTRAINT [PK_EmployeeTerritories] PRIMARY KEY NONCLUSTERED ([EmployeeID], [TerritoryID])

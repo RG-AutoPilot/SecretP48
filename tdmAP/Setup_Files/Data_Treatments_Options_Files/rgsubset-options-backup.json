@@ -1,0 +1,8 @@
+{
+  "jsonSchemaVersion": 1,
+  "startingTables": [],
+  "staticDataTables": [],
+  "excludedTables": [],
+  "manualRelationships": [],
+  "includeTablesRowThreshold": 300
+}

@@ -1,0 +1,166 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|c:\\users\\huxley.kendell\\source\\repos\\secretp48\\flywayproject\\tdmview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\tdmview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\flywayproject\\tdmview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\tdmview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\flywayproject\\flywayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\flywayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\flywayproject\\flywayview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\flywayview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\flywayproject\\obj\\debug\\tdmview.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\obj\\debug\\tdmview.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\flywayproject\\flywaytoolwindowcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\flywaytoolwindowcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\flywayproject\\flywaytoolwindowcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\flywaytoolwindowcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\flywayproject\\flywaytoolwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\flywaytoolwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\flywayproject\\command1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1F5C643-0F58-4E5D-A5DA-6BA8F55D118D}|FlywayProject\\FlywayProject.csproj|solutionrelative:flywayproject\\command1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FlywayView.xaml",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayView.xaml",
+              "RelativeDocumentMoniker": "FlywayProject\\FlywayView.xaml",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayView.xaml",
+              "RelativeToolTip": "FlywayProject\\FlywayView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-25T11:11:53.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TdmView.g.cs",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\obj\\Debug\\TdmView.g.cs",
+              "RelativeDocumentMoniker": "FlywayProject\\obj\\Debug\\TdmView.g.cs",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\obj\\Debug\\TdmView.g.cs",
+              "RelativeToolTip": "FlywayProject\\obj\\Debug\\TdmView.g.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAewDkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T15:19:54.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TdmView.xaml",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\TdmView.xaml",
+              "RelativeDocumentMoniker": "FlywayProject\\TdmView.xaml",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\TdmView.xaml",
+              "RelativeToolTip": "FlywayProject\\TdmView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-24T14:43:31.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TdmView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\TdmView.xaml.cs",
+              "RelativeDocumentMoniker": "FlywayProject\\TdmView.xaml.cs",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\TdmView.xaml.cs",
+              "RelativeToolTip": "FlywayProject\\TdmView.xaml.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAADwv38AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T12:56:05.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FlywayView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayView.xaml.cs",
+              "RelativeDocumentMoniker": "FlywayProject\\FlywayView.xaml.cs",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayView.xaml.cs",
+              "RelativeToolTip": "FlywayProject\\FlywayView.xaml.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T12:53:31.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FlywayToolWindowControl.xaml.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayToolWindowControl.xaml.cs",
+              "RelativeDocumentMoniker": "FlywayProject\\FlywayToolWindowControl.xaml.cs",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Downloads\\FlywayProject_SSMS_Compatible_WithUI\\FlywayProject\\FlywayToolWindowControl.xaml.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\Downloads\\FlywayProject_SSMS_Compatible_WithUI\\FlywayProject\\FlywayToolWindowControl.xaml.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T10:00:37.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FlywayToolWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayToolWindow.cs",
+              "RelativeDocumentMoniker": "FlywayProject\\FlywayToolWindow.cs",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayToolWindow.cs",
+              "RelativeToolTip": "FlywayProject\\FlywayToolWindow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T10:00:34.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FlywayToolWindowControl.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayToolWindowControl.xaml.cs",
+              "RelativeDocumentMoniker": "FlywayProject\\FlywayToolWindowControl.xaml.cs",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\FlywayToolWindowControl.xaml.cs",
+              "RelativeToolTip": "FlywayProject\\FlywayToolWindowControl.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T10:00:17.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Command1.cs",
+              "DocumentMoniker": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\Command1.cs",
+              "RelativeDocumentMoniker": "FlywayProject\\Command1.cs",
+              "ToolTip": "C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\FlywayProject\\Command1.cs",
+              "RelativeToolTip": "FlywayProject\\Command1.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwDAAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T09:55:31.018Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

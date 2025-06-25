@@ -1,0 +1,53 @@
+<UserControl x:Class="FlywayProject.TdmView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20" MaxWidth="650">
+            <TextBlock Text="TDM Autopilot Controls"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#AA0000"
+                       Margin="0,0,0,20"/>
+
+            <!-- Step 1: Create DBs -->
+            <TextBlock Text="Step 1: Create Test Databases (if missing)" FontWeight="SemiBold" Foreground="#333"/>
+            <Button Content="Create Databases"
+                    Click="OnCreateDatabasesClicked"
+                    Width="200" Height="30"
+                    Margin="0,5,0,15"/>
+
+            <!-- Step 2: Run Subset -->
+            <TextBlock Text="Step 2: Subset Options File" FontWeight="SemiBold" Foreground="#333"/>
+            <ComboBox x:Name="SubsetOptionsComboBox" Margin="0,5,0,5" Height="28"/>
+            <TextBlock Text="Additional Where Clause" FontWeight="SemiBold" Foreground="#333"/>
+            <TextBox x:Name="WhereClause" Margin="0,5,0,15" Padding="5"/>
+            <Button Content="Run Subset"
+                    Click="OnRunSubsetClicked"
+                    Width="200" Height="30"
+                    Margin="0,5,0,15"/>
+
+            <!-- Step 3: Generate Classification -->
+            <TextBlock Text="Step 3: Classification" FontWeight="SemiBold" Foreground="#333"/>
+            <Button Content="Generate Classification File"
+                    Click="OnGenerateClassificationClicked"
+                    Width="250" Height="30"
+                    Margin="0,5,0,15"/>
+
+            <!-- Step 4: Generate Masking -->
+            <TextBlock Text="Step 4: Masking File" FontWeight="SemiBold" Foreground="#333"/>
+            <Button Content="Generate Masking File"
+                    Click="OnGenerateMaskingFileClicked"
+                    Width="250" Height="30"
+                    Margin="0,5,0,15"/>
+
+            <!-- Step 5: Run Masking -->
+            <TextBlock Text="Step 5: Run Data Masking" FontWeight="SemiBold" Foreground="#333"/>
+            <ComboBox x:Name="MaskingOptionsComboBox" Margin="0,5,0,5" Height="28"/>
+            <Button Content="Run Masking"
+        Click="OnRunMaskingClicked"
+        Width="200" Height="30"
+        Margin="0,5,0,15"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

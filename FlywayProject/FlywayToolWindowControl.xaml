@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="FlywayProject.FlywayToolWindowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FlywayProject"
+             Background="#F9F9F9"
+             MinWidth="520" MinHeight="440">
+
+    <DockPanel>
+
+        <!-- 🔺 Top Bar -->
+        <Border Background="White" BorderBrush="#CCC" BorderThickness="0,0,0,1" DockPanel.Dock="Top">
+            <Grid Margin="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo -->
+                <Image Grid.Column="0"
+                       Source="pack://application:,,,/FlywayProject;component/Resources/Autopilotlogo.png"
+                       Height="32" VerticalAlignment="Center"/>
+
+                <!-- Title -->
+                <TextBlock Grid.Column="1"
+                           Text="Redgate Autopilot Tools"
+                           FontWeight="Bold"
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Foreground="#444"
+                           Margin="10,0,0,0"/>
+
+                <!-- Toggle Buttons -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="Flyway"
+                            Margin="0,0,10,0"
+                            Padding="12,4"
+                            Click="OnFlywayClick"
+                            Background="#AA0000"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+                    <Button Content="TDM"
+                            Padding="12,4"
+                            Click="OnTdmClick"
+                            Background="#AA0000"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- 🔁 Main content view area -->
+        <ContentControl x:Name="MainContentArea" Margin="12" />
+    </DockPanel>
+</UserControl>
