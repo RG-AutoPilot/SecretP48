@@ -14,6 +14,8 @@ $autoContinue        = [System.Convert]::ToBoolean($env:autoContinue) 2>$null
 $acceptAllDefaults   = [System.Convert]::ToBoolean($env:acceptAllDefaults) 2>$null
 $autopilotRootDir    = $env:TDM_AUTOPILOT_ROOT
 
+Import-Module "$PSScriptRoot\..\..\Setup_Files\helper-functions.psm1" -Force
+
 Write-Host "INFO: Checking TDM CLI tool installation..." -ForegroundColor DarkCyan
 
 # Define expected CLI tools
