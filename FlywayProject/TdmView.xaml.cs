@@ -129,12 +129,43 @@ namespace FlywayProject
 
         private void OnRunSubsetClicked(object sender, RoutedEventArgs e)
         {
-            if (SubsetOptionsComboBox.SelectedItem is string file)
+            if (!(SubsetOptionsComboBox.SelectedItem is string file) || string.IsNullOrWhiteSpace(file))      
             {
-                string path = Path.Combine(subsetFolder, file);
-                RunStep("04_Subset-Data.ps1", $"-optionsFile \"{path}\"");
+                MessageBox.Show("Please select a valid subset options file.", "Missing Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
+
+            string path = Path.Combine(subsetFolder, file);
+            if (!File.Exists(path))
+            {
+                MessageBox.Show($"Subset options file not found:\n{path}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            string source = SourceDbTextBox.Text.Trim();
+            string target = TargetDbTextBox.Text.Trim();
+            string server = SqlInstanceTextBox.Text.Trim();
+
+            bool encrypt = EncryptConnectionCheckBox.IsChecked ?? true;
+            bool trustCert = TrustCertCheckBox.IsChecked ?? true;
+
+            string encryptionArgs = $"Encrypt={encrypt.ToString().ToLower()};TrustServerCertificate={trustCert.ToString().ToLower()}";
+
+            string sourceConnectionString = $"\"Server={server};Database={source};Integrated Security=true;{encryptionArgs};\"";
+            string targetConnectionString = $"\"Server={server};Database={target};Integrated Security=true;{encryptionArgs};\"";
+
+            string extraArgs =
+                $"-subsetterOptionsFile \"{path}\" " +
+                $"-sourceDb \"{source}\" -targetDb \"{target}\" " +
+                $"-sourceConnectionString {sourceConnectionString} " +
+                $"-targetConnectionString {targetConnectionString}";
+
+            RunStep("04_Subset-Data.ps1", extraArgs);
         }
+
+
+
+
 
         private void OnGenerateClassificationClicked(object sender, RoutedEventArgs e)
         {
@@ -201,5 +232,21 @@ namespace FlywayProject
                 MessageBox.Show($"Failed to install TDM CLIs:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void OnTdmRootTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var path = TdmRootTextBox.Text;
+            if (Directory.Exists(path))
+            {
+                // Future: auto-load config files or validate folder here
+                // e.g., load available *.conf files, or enable a "Continue" button
+            }
+        }
+
+        private void OnAuthenticateTdmClicked(object sender, RoutedEventArgs e)
+        {
+            RunStep("Authenticate-Tdm.ps1");
+        }
+
+
     }
 }

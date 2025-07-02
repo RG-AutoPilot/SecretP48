@@ -1856,6 +1856,19 @@
           }
         }
       },
+      "Tomlyn/0.19.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "VSLangProj/17.0.32112.339": {
         "type": "package",
         "dependencies": {
@@ -3876,6 +3889,19 @@
           }
         }
       },
+      "Tomlyn/0.19.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "VSLangProj/17.0.32112.339": {
         "type": "package",
         "dependencies": {
@@ -5856,6 +5882,19 @@
         },
         "runtime": {
           "lib/net461/_._": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Tomlyn/0.19.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tomlyn.dll": {
             "related": ".xml"
           }
         }
@@ -7880,6 +7919,19 @@
           }
         }
       },
+      "Tomlyn/0.19.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "VSLangProj/17.0.32112.339": {
         "type": "package",
         "dependencies": {
@@ -9896,6 +9948,19 @@
         },
         "runtime": {
           "lib/net461/_._": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Tomlyn/0.19.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Tomlyn.dll": {
             "related": ".xml"
           }
         }
@@ -13443,6 +13508,23 @@
         "version.txt"
       ]
     },
+    "Tomlyn/0.19.0": {
+      "sha512": "GlI2o8R8jbZIaE+YX6uA/VoAOH7zIxYeqxDm7jHW2hqUhuB+q19oKold35FkMuv8IZDoCqsTMolaBv2eBLBmrQ==",
+      "type": "package",
+      "path": "tomlyn/0.19.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net8.0/Tomlyn.dll",
+        "lib/net8.0/Tomlyn.xml",
+        "lib/netstandard2.0/Tomlyn.dll",
+        "lib/netstandard2.0/Tomlyn.xml",
+        "logo.png",
+        "readme.md",
+        "tomlyn.0.19.0.nupkg.sha512",
+        "tomlyn.nuspec"
+      ]
+    },
     "VSLangProj/17.0.32112.339": {
       "sha512": "xTWujQFrYExLoRCkLSJP7XEgJgw22FwkLTdmeMJ0GajovH5kKe/9nc85wkT0wvQCJdcM90oTU81jR2nSd1x1nA==",
       "type": "package",
@@ -13700,7 +13782,8 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
       "Microsoft.VSSDK.BuildTools >= 17.14.2094",
-      "Microsoft.VisualStudio.SDK >= 17.0.32112.339"
+      "Microsoft.VisualStudio.SDK >= 17.0.32112.339",
+      "Tomlyn >= 0.19.0"
     ]
   },
   "packageFolders": {
@@ -13761,6 +13844,10 @@
             "noWarn": [
               "NU1604"
             ]
+          },
+          "Tomlyn": {
+            "target": "Package",
+            "version": "[0.19.0, )"
           }
         }
       }

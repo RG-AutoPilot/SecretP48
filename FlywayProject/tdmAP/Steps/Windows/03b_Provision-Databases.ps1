@@ -46,8 +46,8 @@ Import-Module "$PSScriptRoot\..\..\Setup_Files\helper-functions.psm1" -Force
 
 
 # === Defaults ===
-$sourceDb = "autopilotdev"
-$targetDb = "autopilotqa"
+$sourceDb = "Autopilot_FullRestore"
+$targetDb = "Autopilot_Treated"
 
 # === Derive script paths ===
 $scriptFolder = Join-Path $repoLocation "Setup_Files\Sample_Database_Scripts"

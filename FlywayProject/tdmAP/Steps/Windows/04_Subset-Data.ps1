@@ -8,23 +8,23 @@
 # Description: TDM Data Treatment: Subset target database to prferred specification
 # Last Update Comment:
 # ===========================
-
 param (
-    [switch]$previewOnly  # If set, shows the CLI command but does not run it
+    [switch]$previewOnly,
+    [string]$sqlInstance,
+    [string]$sourceDb,
+    [string]$targetDb,
+    [string]$subsetterOptionsFile,
+    [string]$autopilotRootDir,
+    [string]$sourceConnectionString,
+    [string]$targetConnectionString,
+    [string]$logLevel = "information",
+    [bool]$autoContinue = $false,
+    [bool]$acceptAllDefaults = $false
 )
 
-# === Pull Variables from Environment ===
-$sqlInstance              = $env:sqlInstance
-$sourceDb                 = $env:sourceDb
-$targetDb                 = $env:targetDb
-$autopilotRootDir         = $env:TDM_AUTOPILOT_ROOT
-$subsetterOptionsFile     = $env:subsetterOptionsFile
-$sourceConnectionString   = $env:sourceConnectionString
-$targetConnectionString   = $env:targetConnectionString
-$logLevel                 = $env:logLevel
-$autoContinue             = [System.Convert]::ToBoolean($env:autoContinue) 2>$null
-$acceptAllDefaults        = [System.Convert]::ToBoolean($env:acceptAllDefaults) 2>$null
-
+Write-Host $sourceConnectionString
+Write-Host $targetConnectionString
+Write-Host $subsetterOptionsFile
 # Normalize relative paths from the config if they start with '.\' or './'
 function Normalize-Path {
     param (
@@ -70,7 +70,7 @@ if ($previewOnly) {
 	Write-Host ""
     return
 }
-
+Write-Host $rgsubsetArgs
 # === Execute the real command ===
 try {
     & rgsubset @rgsubsetArgs | Tee-Object -Variable rgsubsetOutput

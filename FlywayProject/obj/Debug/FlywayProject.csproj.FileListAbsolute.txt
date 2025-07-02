@@ -116,3 +116,5 @@ C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\obj\Debug\FlywayPro
 C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\obj\Debug\extension.vsixmanifest
 C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\obj\Debug\files.json
 C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\obj\Debug\createTemplateManifests.cache
+C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\bin\Debug\Tomlyn.dll
+C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\obj\Debug\FlywayPr.AF943A4F.Up2Date
