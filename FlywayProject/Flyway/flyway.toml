@@ -3,7 +3,7 @@ name = "Autopilot - FastTrack"
 databaseType = "SqlServer"
 
 [environments.development]
-url = "jdbc:sqlserver://localhost;databaseName=AutopilotDev;encrypt=true;integratedSecurity=true;trustServerCertificate=true"
+url = "jdbc:sqlserver://localhost;databaseName=Autopilot_FullRestore;encrypt=true;integratedSecurity=true;trustServerCertificate=true"
 displayName = "Development database"
 
 [environments.shadow]
@@ -29,6 +29,11 @@ url = "jdbc:sqlserver://localhost;databaseName=AutopilotBuild;encrypt=true;integ
 displayName = "Build database"
 provisioner = "clean"
 
+[environments.fakeTest]
+url = "jdbc:sqlserver://localhost;databaseName=AutopilotBuild;encrypt=true;integratedSecurity=true;trustServerCertificate=true"
+displayName = "Build database"
+provisioner = "clean"
+
 [flyway]
 locations = [ "filesystem:migrations" ]
 mixed = true
@@ -43,19 +48,20 @@ licenseKey = "FL014AF0DACA9D278D40511E900B57801E37ABCE7706E91F5C605952A232C7E2C5
 [flyway.sqlserver.clean]
 mode = "all"
 
-[flyway.sqlserver.clean.schemas]
-exclude = [ "ExampleSchema1", "ExampleSchema2" ]
+  [flyway.sqlserver.clean.schemas]
+  exclude = [ "ExampleSchema1", "ExampleSchema2" ]
 
 [flywayDesktop]
 developmentEnvironment = "development"
 shadowEnvironment = "shadow"
 schemaModel = "./schema-model"
 
-[flywayDesktop.generate]
-undoScripts = true
+  [flywayDesktop.generate]
+  undoScripts = true
 
-[redgateCompare.sqlserver]
-filterFile = "Filter.scpf"
+[redgateCompare]
+  [redgateCompare.sqlserver]
+  filterFile = "Filter.scpf"
 
 [redgateCompare.sqlserver.options.behavior]
 addCreateOrAlterForRerunnableScripts = false
@@ -146,3 +152,15 @@ dropPrimaryKeysIndexesAndUniqueConstraints = false
 reseedIdentityColumns = false
 skipIntegrityChecksForForeignKeys = false
 transportClrDataTypesAsBinary = false
+
+  [[redgateCompare.staticDataTables]]
+  schema = "Sales"
+  table = "Customers"
+
+  [[redgateCompare.staticDataTables]]
+  schema = "Sales"
+  table = "CustomersFeedback"
+
+  [[redgateCompare.staticDataTables]]
+  schema = "Logistics"
+  table = "Flight"

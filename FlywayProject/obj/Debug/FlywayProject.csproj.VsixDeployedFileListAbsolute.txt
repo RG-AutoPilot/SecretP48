@@ -1,5 +1,5 @@
 C:\Program Files\Microsoft SQL Server Management Studio 21\Release\Common7\IDE\Extensions\FlywayTest\\FlywayProject.dll
+C:\Program Files\Microsoft SQL Server Management Studio 21\Release\Common7\IDE\Extensions\FlywayTest\\Tomlyn.dll
 C:\Program Files\Microsoft SQL Server Management Studio 21\Release\Common7\IDE\Extensions\FlywayTest\\FlywayProject.pkgdef
 C:\Program Files\Microsoft SQL Server Management Studio 21\Release\Common7\IDE\Extensions\FlywayTest\\createTemplateManifests.cache
 C:\Program Files\Microsoft SQL Server Management Studio 21\Release\Common7\IDE\Extensions\FlywayTest\\extension.vsixmanifest
-C:\Program Files\Microsoft SQL Server Management Studio 21\Release\Common7\IDE\Extensions\FlywayTest\\Tomlyn.dll

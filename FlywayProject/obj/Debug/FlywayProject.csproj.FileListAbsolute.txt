@@ -118,3 +118,4 @@ C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\obj\Debug\files.jso
 C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\obj\Debug\createTemplateManifests.cache
 C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\bin\Debug\Tomlyn.dll
 C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\obj\Debug\FlywayPr.AF943A4F.Up2Date
+C:\Users\Huxley.Kendell\Source\Repos\SecretP48\FlywayProject\bin\Debug\Newtonsoft.Json.dll
