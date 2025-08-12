@@ -6,16 +6,32 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Tomlyn;
 using WinForms = System.Windows.Forms;
+using System.Diagnostics;
 
 namespace FlywayProject
 {
     public partial class FlywayView : UserControl
     {
+        private static readonly string LogFilePath = @"C:\\Users\\Huxley.Kendell\\Source\\Repos\\SecretP48\\Logs\\FlywayTool.log";
+
+        private static void Log(string message)
+        {
+            try
+            {
+                var logDir = Path.GetDirectoryName(LogFilePath);
+                if (!Directory.Exists(logDir))
+                    Directory.CreateDirectory(logDir);
+                File.AppendAllText(LogFilePath, $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}\r\n");
+            }
+            catch { /* ignore logging errors */ }
+        }
+
         private string flywayConfigPath;
 
         public FlywayView()
@@ -74,28 +90,50 @@ namespace FlywayProject
 
                 var migrationList = new List<FlywayMigrationItem>();
 
-                foreach (var mig in migrations)
+                if (migrations != null && migrations.Count > 0)
                 {
-                    var item = new FlywayMigrationItem
+                    foreach (var mig in migrations)
                     {
-                        IsSelected = mig["state"] != null && mig["state"].ToString() == "Pending",
-                        Category = mig["category"]?.ToString(),
-                        Version = mig["version"]?.ToString(),
-                        Description = mig["description"]?.ToString(),
-                        State = mig["state"]?.ToString()
-                    };
-
-                    migrationList.Add(item);
+                        var item = new FlywayMigrationItem
+                        {
+                            IsSelected = mig["state"] != null && mig["state"].ToString() == "Pending",
+                            Category = mig["category"]?.ToString(),
+                            Version = mig["version"]?.ToString(),
+                            Description = mig["description"]?.ToString(),
+                            State = mig["state"]?.ToString()
+                        };
+                        migrationList.Add(item);
+                    }
+                }
+                else
+                {
+                    // Add a default empty row for sizing/visual feedback
+                    migrationList.Add(new FlywayMigrationItem
+                    {
+                        IsSelected = false,
+                        Category = string.Empty,
+                        Version = string.Empty,
+                        Description = string.Empty,
+                        State = string.Empty
+                    });
                 }
 
                 MigrationsDataGrid.ItemsSource = migrationList;
                 MigrationsStatusBlock.Text = $"✅ Loaded {migrationList.Count} migrations.";
                 MigrationsStatusBlock.Foreground = Brushes.DarkGreen;
+
+                // Show/hide empty state message
+                if (MigrationsEmptyBlock != null)
+                {
+                    MigrationsEmptyBlock.Visibility = (migrations == null || migrations.Count == 0) ? Visibility.Visible : Visibility.Collapsed;
+                }
             }
             catch (Exception ex)
             {
                 MigrationsStatusBlock.Text = $"❌ Failed to load migrations: {ex.Message}";
                 MigrationsStatusBlock.Foreground = Brushes.DarkRed;
+                if (MigrationsEmptyBlock != null)
+                    MigrationsEmptyBlock.Visibility = Visibility.Visible;
             }
         }
 
@@ -288,11 +326,6 @@ namespace FlywayProject
 
         }
 
-        private void OnTestConnectionClicked(object sender, RoutedEventArgs e)
-        {
-            RunStep("03a_Create-ConnectionStrings.ps1");
-        }
-
         private void OnInstallFlywayClisClicked(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Install Flyway CLI not implemented.");
@@ -321,8 +354,7 @@ namespace FlywayProject
 
         private void OnAuthenticateFWClicked(object sender, RoutedEventArgs e)
         {
-           
-        string arguments = $"auth -IAgreeToTheEula";
+            string arguments = $"auth -IAgreeToTheEula";
 
             try
             {
@@ -397,7 +429,14 @@ namespace FlywayProject
                         string id = diff["id"]?.ToString();
                         string type = diff["differenceType"]?.ToString();
                         string objType = diff["objectType"]?.ToString();
-                        string name = diff["from"]?["name"]?.ToString() ?? diff["to"]?["name"]?.ToString() ?? "(unknown)";
+                        string name = "(unknown)";
+                        // Safely handle from/to for Add/Edit/Delete
+                        var fromObj = diff["from"] as JObject;
+                        var toObj = diff["to"] as JObject;
+                        if (fromObj != null && fromObj["name"] != null)
+                            name = fromObj["name"].ToString();
+                        else if (toObj != null && toObj["name"] != null)
+                            name = toObj["name"].ToString();
 
                         if (!string.IsNullOrWhiteSpace(id))
                         {
@@ -463,7 +502,7 @@ namespace FlywayProject
             }
 
             string idArg = string.Join(",", selectedIds.Select(s => s.Trim()));
-            string args = $"model \"-changes={idArg}\" \"-configFiles={configPath}\" \"-schemaModelLocation={modelPath}\"";
+            string args = $"model \"-changes={idArg}\" -workingDirectory=\"{flywayDir}\"";
 
             try
             {
@@ -536,6 +575,8 @@ namespace FlywayProject
             string arguments =
                 $"'-diff.source=schemaModel' '-diff.target=migrations' '-diff.buildEnvironment=shadow' -workingDirectory=\"{flywayDir}\" -outputType=json diff";
 
+            string logCmd = $"pwsh.exe -ExecutionPolicy Bypass -Command \"flyway {arguments}\"";
+            Log($"Generate Preview: Started. Command: {logCmd}");
             try
             {
                 var psi = new ProcessStartInfo
@@ -553,14 +594,40 @@ namespace FlywayProject
                     string output = reader.ReadToEnd();
                     process.WaitForExit();
 
+                    Log($"Generate Preview: Raw output: {output}");
+
                     if (string.IsNullOrWhiteSpace(output))
                     {
                         GenerateStatusBlock.Text = "❌ No output received from Flyway.";
                         GenerateStatusBlock.Foreground = Brushes.DarkRed;
+                        Log("Generate Preview: No output received from Flyway.");
                         return;
                     }
 
-                    JObject result = JObject.Parse(output);
+                    JObject result = null;
+                    try
+                    {
+                        result = JObject.Parse(output);
+                    }
+                    catch (Exception ex)
+                    {
+                        GenerateStatusBlock.Text = $"❌ Failed to parse Flyway output: {ex.Message}";
+                        GenerateStatusBlock.Foreground = Brushes.DarkRed;
+                        Log($"Generate Preview: Failed to parse output: {ex.Message}");
+                        return;
+                    }
+
+                    // Surface Flyway errors in the GUI
+                    if (result["error"] != null)
+                    {
+                        var errorObj = result["error"];
+                        string errorMsg = errorObj["message"]?.ToString() ?? errorObj.ToString();
+                        GenerateStatusBlock.Text = $"❌ Flyway error: {errorMsg}";
+                        GenerateStatusBlock.Foreground = Brushes.DarkRed;
+                        Log($"Generate Preview: Flyway error: {errorMsg}");
+                        return;
+                    }
+
                     JArray differences = (JArray)result["differences"];
                     MigrationChangesListBox.Items.Clear();
 
@@ -568,6 +635,7 @@ namespace FlywayProject
                     {
                         GenerateStatusBlock.Text = "✅ No differences found.";
                         GenerateStatusBlock.Foreground = Brushes.DarkGreen;
+                        Log("Generate Preview: No differences found.");
                         return;
                     }
 
@@ -577,7 +645,14 @@ namespace FlywayProject
                         string id = diff["id"]?.ToString();
                         string type = diff["differenceType"]?.ToString();
                         string objType = diff["objectType"]?.ToString();
-                        string name = diff["from"]?["name"]?.ToString() ?? diff["to"]?["name"]?.ToString() ?? "(unknown)";
+                        string name = "(unknown)";
+                        // Safely handle from/to for Add/Edit/Delete
+                        var fromObj = diff["from"] as JObject;
+                        var toObj = diff["to"] as JObject;
+                        if (fromObj != null && fromObj["name"] != null)
+                            name = fromObj["name"].ToString();
+                        else if (toObj != null && toObj["name"] != null)
+                            name = toObj["name"].ToString();
 
                         if (!string.IsNullOrWhiteSpace(id))
                         {
@@ -591,25 +666,37 @@ namespace FlywayProject
 
                     GenerateStatusBlock.Text = $"✅ Found {MigrationChangesListBox.Items.Count} changes.";
                     GenerateStatusBlock.Foreground = Brushes.DarkGreen;
+                    Log($"Generate Preview: Found {MigrationChangesListBox.Items.Count} changes.");
                 }
             }
             catch (Exception ex)
             {
                 GenerateStatusBlock.Text = $"❌ Failed to run diff preview:\n{ex.Message}";
                 GenerateStatusBlock.Foreground = Brushes.DarkRed;
+                Log($"Generate Preview Exception: {ex.Message}");
             }
+        }
+
+        private string GetSqlArgs()
+        {
+            // Your logic to construct SQL arguments
+            return "";
+        }
+
+        private void OnLogoClick(object sender, RoutedEventArgs e)
+        {
+            // TODO: Implement logo click action if needed
         }
 
         private void OnGenerateMigrationClicked(object sender, RoutedEventArgs e)
         {
             string flywayDir = Path.GetDirectoryName(flywayConfigPath);
-            string modelPath = Path.Combine(flywayDir, "schema-model");
             string configPath = flywayConfigPath;
+            string modelPath = Path.Combine(flywayDir, "schema-model");
+            string description = GenerateDescriptionTextBox.Text.Trim();
 
-            GenerateStatusBlock.Text = ""; // clear previous
-
+            // Collect selected change IDs
             var selectedIds = new List<string>();
-
             foreach (var item in MigrationChangesListBox.Items)
             {
                 var container = (ListBoxItem)MigrationChangesListBox.ItemContainerGenerator.ContainerFromItem(item);
@@ -619,44 +706,47 @@ namespace FlywayProject
                     MigrationChangesListBox.ScrollIntoView(item);
                     container = (ListBoxItem)MigrationChangesListBox.ItemContainerGenerator.ContainerFromItem(item);
                 }
-
                 var checkbox = FindVisualChild<CheckBox>(container);
                 if (checkbox?.IsChecked == true && item is FlywayDiffItem diffItem)
                 {
                     selectedIds.Add(diffItem.Id);
                 }
             }
-
             if (selectedIds.Count == 0)
             {
-                GenerateStatusBlock.Text = "❌ Please select at least one change.";
+                GenerateStatusBlock.Text = "❌ Please select at least one change to generate a migration.";
                 GenerateStatusBlock.Foreground = Brushes.DarkRed;
                 return;
             }
-
+            if (string.IsNullOrWhiteSpace(description))
+            {
+                GenerateStatusBlock.Text = "❌ Please enter a script description.";
+                GenerateStatusBlock.Foreground = Brushes.DarkRed;
+                return;
+            }
             string idArg = string.Join(",", selectedIds.Select(s => s.Trim()));
-            string args = $"generate \"-changes={idArg}\" -workingDirectory=\"{flywayDir}\" -types=versioned,undo -description=\"AutoScriptInsertDate\" ";
-
+            string arguments = $"generate -changes=\"{idArg}\" -description=\"{description}\" -workingDirectory=\"{flywayDir}\" -types=versioned,undo";
+            Log($"Generate Migration: Started. Command: flyway {arguments}");
             try
             {
                 var psi = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
-                    Arguments = $"/c flyway {args}",
+                    Arguments = $"/c flyway {arguments}",
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
                 };
-
                 var process = Process.Start(psi);
                 string output = process.StandardOutput.ReadToEnd();
                 string error = process.StandardError.ReadToEnd();
                 process.WaitForExit();
-
+                Log($"Generate Migration: Output: {output}");
+                Log($"Generate Migration: Error: {error}");
                 if (!string.IsNullOrWhiteSpace(error))
                 {
-                    GenerateStatusBlock.Text = $"❌ Flyway returned an error:\n{error}";
+                    GenerateStatusBlock.Text = $"❌ Flyway error:\n{error}";
                     GenerateStatusBlock.Foreground = Brushes.DarkRed;
                 }
                 else
@@ -666,151 +756,122 @@ namespace FlywayProject
                               .Where(line => !line.StartsWith("Flyway ") &&
                                              !line.StartsWith("See release notes") &&
                                              !line.StartsWith("https://")));
-
-                    GenerateStatusBlock.Text = $"✅ Migration generated:\n{cleanedOutput}";
+                    GenerateStatusBlock.Text = $"✅ Migration generated!\n{cleanedOutput}";
                     GenerateStatusBlock.Foreground = Brushes.DarkGreen;
-                    MigrationChangesListBox.Items.Clear();
                 }
             }
             catch (Exception ex)
             {
-                GenerateStatusBlock.Text = $"❌ Failed to run Flyway generate:\n{ex.Message}";
+                GenerateStatusBlock.Text = $"❌ Failed to generate migration:\n{ex.Message}";
                 GenerateStatusBlock.Foreground = Brushes.DarkRed;
+                Log($"Generate Migration Exception: {ex.Message}");
             }
         }
-
-
 
         private void OnDeployClicked(object sender, RoutedEventArgs e)
         {
             string flywayDir = Path.GetDirectoryName(flywayConfigPath);
-            string source = FlywaySourceEnvComboBox.SelectedItem?.ToString()?.Trim();
-            string target = FlywayTargetEnvComboBox.SelectedItem?.ToString()?.Trim();
+            string sourceEnv = FlywaySourceEnvComboBox.SelectedItem?.ToString()?.Trim();
+            string targetEnv = FlywayTargetEnvComboBox.SelectedItem?.ToString()?.Trim();
             string additional = FlywayParamsBox.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(flywayDir) || string.IsNullOrWhiteSpace(source) || string.IsNullOrWhiteSpace(target))
+            if (string.IsNullOrWhiteSpace(flywayDir) || string.IsNullOrWhiteSpace(sourceEnv) || string.IsNullOrWhiteSpace(targetEnv))
             {
-                MessageBox.Show("Please fill in all required fields (Flyway Directory, Source, Target).");
+                MessageBox.Show("Please select both source and target environments.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            string command =
-                $"prepare deploy " +
-                $"-prepare.source={source} " +
-                $"-prepare.target={target} " +
-                $"-environment={target} " +
-                $"-environments.{target}.user=REPLACE_ME " +
-                $"-environments.{target}.password=REPLACE_ME " +
-                $"-prepare.scriptFilename=\"{flywayDir}\\Artifact\\migration.sql\" " +
-                $"-deploy.scriptFilename=\"{flywayDir}\\Artifact\\migration.sql\" " +
-                "-prepare.force=true " +
-                $"-configFiles=\"{flywayConfigPath}\" " +
-                $"-schemaModelLocation=\"{flywayDir}\\schema-model\" " +
-                "-cleanDisabled=false " +
-                additional;
-
+            string arguments = $"deploy -sourceEnvironment=\"{sourceEnv}\" -targetEnvironment=\"{targetEnv}\" -workingDirectory=\"{flywayDir}\" {additional}";
+            Log($"Deploy: Started. Command: flyway {arguments}");
             try
             {
-                Process.Start(new ProcessStartInfo
+                var psi = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
-                    Arguments = $"/k flyway {command}",
-                    WorkingDirectory = flywayDir,
-                    UseShellExecute = true
-                });
+                    Arguments = $"/c flyway {arguments}",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+                var process = Process.Start(psi);
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+                process.WaitForExit();
+                Log($"Deploy: Output: {output}");
+                Log($"Deploy: Error: {error}");
+                if (!string.IsNullOrWhiteSpace(error))
+                {
+                    MessageBox.Show($"❌ Flyway error:\n{error}", "Deploy Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    MessageBox.Show($"✅ Deploy completed!\n{output}", "Deploy Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to run Flyway:\n{ex.Message}");
+                MessageBox.Show($"❌ Failed to deploy:\n{ex.Message}", "Deploy Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log($"Deploy Exception: {ex.Message}");
             }
         }
 
         private void OnGenerateReportClicked(object sender, RoutedEventArgs e)
         {
             string flywayDir = Path.GetDirectoryName(flywayConfigPath);
-            string configFile = flywayConfigPath;
-
-            if (!File.Exists(configFile))
-            {
-                MessageBox.Show("flyway.toml not found in the Flyway directory.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
             string env = ReportEnvironmentComboBox.SelectedItem?.ToString()?.Trim();
             string checkEnv = ReportCheckEnvTextBox.Text.Trim();
+            bool includeChanges = ReportChangesCheckbox.IsChecked == true;
+            bool includeDrift = ReportDriftCheckbox.IsChecked == true;
+            bool includeCode = ReportCodeCheckbox.IsChecked == true;
+            bool includeDryRun = ReportDryRunCheckbox.IsChecked == true;
 
-            if (string.IsNullOrWhiteSpace(env) || string.IsNullOrWhiteSpace(checkEnv))
+            if (string.IsNullOrWhiteSpace(flywayDir) || string.IsNullOrWhiteSpace(env))
             {
-                MessageBox.Show("Please specify both the environment and the check environment ID.", "Missing Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please select an environment for the report.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            List<string> flags = new List<string> { "check" };
+            var reportArgs = $"check -environment=\"{env}\" -workingDirectory=\"{flywayDir}\" -cleanDisabled=false";
+            if (!string.IsNullOrWhiteSpace(checkEnv))
+                reportArgs += $" -check.buildEnvironment=\"{checkEnv}\"";
+            if (includeChanges) reportArgs += " -changes";
+            if (includeDrift) reportArgs += " -drift";
+            if (includeCode) reportArgs += " -code";
+            if (includeDryRun) reportArgs += " -dryrun";
 
-            if (ReportChangesCheckbox.IsChecked == true) flags.Add("-changes");
-            if (ReportDriftCheckbox.IsChecked == true) flags.Add("-drift");
-            if (ReportCodeCheckbox.IsChecked == true) flags.Add("-code");
-            if (ReportDryRunCheckbox.IsChecked == true) flags.Add("-dryrun");
-
-            flags.Add($"-check.buildEnvironment={checkEnv}");
-            flags.Add($"-environment={env}");
-            flags.Add("-cleanDisabled=false");
-            flags.Add($"-configFiles=\"{configFile}\"");
-
-            bool isWinAuth = WindowsAuthCheckBox.IsChecked ?? true;
-            if (!isWinAuth)
-            {
-                string user = UsernameTextBox.Text.Trim();
-                string pass = PasswordBox.Password.Trim();
-                if (!string.IsNullOrWhiteSpace(user)) flags.Add($"-username=\"{user}\"");
-                if (!string.IsNullOrWhiteSpace(pass)) flags.Add($"-password=\"{pass}\"");
-            }
-
-            string finalArgs = string.Join(" ", flags);
-
+            Log($"Generate Report: Started. Command: flyway {reportArgs}");
             try
             {
                 var psi = new ProcessStartInfo
                 {
                     FileName = "cmd.exe",
-                    Arguments = $"/k flyway {finalArgs}",
-                    WorkingDirectory = flywayDir,
-                    UseShellExecute = true
+                    Arguments = $"/c flyway {reportArgs}",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
                 };
-
-                Process.Start(psi);
+                var process = Process.Start(psi);
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+                process.WaitForExit();
+                Log($"Generate Report: Output: {output}");
+                Log($"Generate Report: Error: {error}");
+                if (!string.IsNullOrWhiteSpace(error))
+                {
+                    MessageBox.Show($"❌ Flyway error:\n{error}", "Report Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    MessageBox.Show($"✅ Report generated!\n{output}", "Report Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to run Flyway report:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"❌ Failed to generate report:\n{ex.Message}", "Report Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log($"Generate Report Exception: {ex.Message}");
             }
-        }
-
-        private string GetSqlArgs()
-        {
-            var instance = SqlInstanceTextBox.Text.Trim();
-            var winAuth = WindowsAuthCheckBox.IsChecked ?? true;
-            var encrypt = EncryptConnectionCheckBox.IsChecked ?? true;
-            var trust = TrustCertCheckBox.IsChecked ?? true;
-
-            var args = $"-sqlInstance \"{instance}\" -winAuth:{winAuth.ToString().ToLower()} -encryptConnection:{encrypt.ToString().ToLower()} -trustCert:{trust.ToString().ToLower()}";
-
-            if (!winAuth)
-            {
-                args += $" -username \"{UsernameTextBox.Text.Trim()}\" -password \"{PasswordBox.Password.Trim()}\"";
-            }
-
-            return args;
-        }
-
-        private void MigrationsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void FlywayParamsBox_TextChanged()
-        {
-
         }
     }
 }

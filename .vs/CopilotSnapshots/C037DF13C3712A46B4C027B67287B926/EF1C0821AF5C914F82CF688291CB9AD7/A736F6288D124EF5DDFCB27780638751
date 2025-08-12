@@ -1,0 +1,348 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="FlywayProject.FlywayView"
+             Background="#FAFAFA"
+             Padding="0"
+             MinWidth="700" MinHeight="520">
+    <UserControl.Resources>
+        <!-- Modern Button Style (inline, no dependencies) -->
+        <Style TargetType="{x:Type Button}" x:Key="ModernButton">
+            <Setter Property="Background" Value="#F5F7FA"/>
+            <Setter Property="BorderBrush" Value="#C3CFE2"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#222"/>
+            <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="26,12"/>
+            <Setter Property="Margin" Value="6,0,0,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E3EFFF" TargetName="border"/>
+                                <Setter Property="BorderBrush" Value="#4A90E2" TargetName="border"/>
+                                <Setter Property="Effect" TargetName="border">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="8" ShadowDepth="1" Color="#4A90E2" Opacity="0.18"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#D0E6FF" TargetName="border"/>
+                                <Setter Property="BorderBrush" Value="#357ABD" TargetName="border"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="#F0F0F0" TargetName="border"/>
+                                <Setter Property="Foreground" Value="#AAA"/>
+                                <Setter Property="BorderBrush" Value="#E0E0E0" TargetName="border"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- Modern TabControl Style -->
+        <Style TargetType="{x:Type TabControl}" x:Key="ModernTabControl">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="{x:Type TabItem}" x:Key="ModernTabItem">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#222"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Margin" Value="2,0,0,0"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1,1,1,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8,8,0,0" >
+                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#FFF3F3F3"/>
+                                <Setter Property="Foreground" Value="#AA0000"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#AA0000"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#FFF8F8F8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>
+        <!-- Sleek Top Bar with Title and Prominent Logo on the Right -->
+        <Border Background="White" BorderBrush="#E0E0E0" BorderThickness="0,0,0,1" DockPanel.Dock="Top">
+            <Grid Height="80">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <!-- Sleek Title -->
+                <TextBlock Grid.Column="0"
+                           FontFamily="Segoe UI Semibold"
+                           FontWeight="SemiBold"
+                           FontSize="26"
+                           VerticalAlignment="Center"
+                           Foreground="#222"
+                           Margin="24,0,0,0"
+                           TextTrimming="CharacterEllipsis"><Run Text="Flyway "/><Run Text="– Plug 'N Play" Foreground="#AA0000"/></TextBlock>
+                <!-- Prominent Logo on the Right as a clickable button with fallback -->
+                <Button Grid.Column="1" Style="{StaticResource ModernButton}" Background="Transparent" BorderThickness="0" Padding="0" Margin="0,0,16,0" ToolTip="Open Flyway Autopilot Documentation" Click="OnLogoClick">
+                    <Border Background="#FFF" CornerRadius="8" BorderBrush="#DDD" BorderThickness="1" VerticalAlignment="Center">
+                        <Grid>
+                            <Image Source="pack://application:,,,/FlywayProject;component/Resources/Autopilotlogo.png"
+                                   Height="64" Width="155"
+                                   VerticalAlignment="Center" Stretch="Uniform"/>
+                            <TextBlock Text="Flyway" Foreground="#AA0000" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" x:Name="LogoFallbackText"/>
+                        </Grid>
+                    </Border>
+                </Button>
+            </Grid>
+        </Border>
+        <!-- Main Content Tabs (no ScrollViewer wrapper) -->
+        <TabControl Margin="0,10,0,0" TabStripPlacement="Top" Style="{StaticResource ModernTabControl}">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource ModernTabItem}"/>
+            </TabControl.Resources>
+            <TabControl.Style>
+                <StaticResource ResourceKey="ModernTabControl"/>
+            </TabControl.Style>
+            <!-- Capture Tab (UPDATED) -->
+            <TabItem Header="📸 Capture">
+                <StackPanel Margin="28">
+                    <GroupBox Header="Capture Changes" Margin="0 0 0 28" Padding="24">
+                        <StackPanel Margin="0 0 0 28">
+                            <!-- Environment selection and preview button -->
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                                <TextBlock Text="Source Env:" Width="120" VerticalAlignment="Center" Margin="0,0,24,0"/>
+                                <ComboBox x:Name="FlywaySourceEnvComboBoxTwo" Width="150" Margin="0,0,24,0" Padding="12,6"/>
+                                <Button Content="Preview Changes" Click="OnCaptureClicked" Style="{StaticResource ModernButton}"/>
+                            </StackPanel>
+
+                            <!-- Checkbox list of schema changes -->
+                            <ListBox x:Name="SchemaChangesListBox" Height="200" Margin="0 0 0 20" Padding="8,4">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding}" IsChecked="False"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                            <!-- Button to capture selected items -->
+                            <Button Content="Capture Selected Changes" Click="OnCaptureSelectedClicked" Style="{StaticResource ModernButton}" HorizontalAlignment="Left" Margin="0,0,0,20" BorderBrush="#FFE2C3C3"/>
+                            <TextBlock x:Name="CaptureStatusBlock" Text="" TextWrapping="Wrap" Margin="0,20,0,0" Foreground="DarkGreen" FontFamily="Consolas" FontSize="12"/>
+                        </StackPanel>
+
+
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="📸 Generate Migrations" x:Name="GenerateMigrationsTab">
+                <StackPanel Margin="10">
+                    <GroupBox Header="Generate Migration Script" Margin="0 0 10 10">
+                        <StackPanel Margin="10">
+
+                            <!-- Hardcoded source/target envs shown as text -->
+                            <StackPanel Orientation="Horizontal" Margin="0 0 5 0">
+                                <TextBlock Text="Source Env:" Width="120" VerticalAlignment="Center"/>
+                                <TextBlock Text="schemaModel" FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBlock Text="     Target Env:" Margin="20,0,0,0" Width="100" VerticalAlignment="Center"/>
+                                <TextBlock Text="migrations" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <!-- Checkbox list -->
+                            <ListBox x:Name="MigrationChangesListBox" Height="200" Margin="0 10 0 0">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding}" IsChecked="False"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                            <!-- Description entry -->
+                            <StackPanel Orientation="Horizontal" Margin="0 10 0 5">
+                                <TextBlock Text="Script Description:" Width="120" VerticalAlignment="Center"/>
+                                <TextBox x:Name="GenerateDescriptionTextBox" Width="300" />
+                            </StackPanel>
+
+                            <!-- Button row at the bottom -->
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button Content="Refresh Pending Changes" Click="OnGeneratePreviewClicked" Style="{StaticResource ModernButton}" Margin="0,0,8,0"/>
+                                <Button Content="Generate Migration" Click="OnGenerateMigrationClicked" Style="{StaticResource ModernButton}"/>
+                            </StackPanel>
+                            <TextBlock x:Name="GenerateStatusBlock" Text="" TextWrapping="Wrap" Margin="0,10,0,0" Foreground="DarkGreen" FontFamily="Consolas" FontSize="12"/>
+
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="📋 Migrations" x:Name="MigrationsTab">
+                <StackPanel Margin="28">
+                    <GroupBox Header="Available Migrations" Padding="24" Margin="0 0 0 28">
+                        <StackPanel Margin="0">
+                            <StackPanel Orientation="Horizontal" Margin="0 0 24 24">
+                                <TextBlock Text="Environment:" Width="100" VerticalAlignment="Center" Margin="0,0,24,0"/>
+                                <ComboBox x:Name="MigrationsEnvComboBox" Width="150" Margin="0,0,24,0" Padding="12,6"/>
+                                <Button Content="Load Migrations" Click="OnLoadMigrationsClicked" Style="{StaticResource ModernButton}" Margin="0,0,24,0"/>
+                            </StackPanel>
+                            <Border BorderThickness="1" BorderBrush="#DDD" CornerRadius="4" Margin="0 0 0 24" Background="White" Padding="12" HorizontalAlignment="Stretch" MinWidth="600">
+                                <Grid HorizontalAlignment="Stretch">
+                                    <DataGrid x:Name="MigrationsDataGrid"
+                                        AutoGenerateColumns="False"
+                                        HeadersVisibility="Column"
+                                        CanUserAddRows="False"
+                                        CanUserDeleteRows="False"
+                                        IsReadOnly="False"
+                                        GridLinesVisibility="None"
+                                        SelectionMode="Extended"
+                                        RowBackground="White"
+                                        AlternatingRowBackground="#F9F9F9"
+                                        BorderThickness="0"
+                                        RowHeaderWidth="0"
+                                        FontSize="13"
+                                        FontFamily="Segoe UI"
+                                        Margin="0"
+                                        VerticalScrollBarVisibility="Auto"
+                                        HorizontalScrollBarVisibility="Auto"
+                                        HorizontalAlignment="Stretch"
+                                        MinWidth="600">
+                                    <DataGrid.Resources>
+                                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                                            <Setter Property="Background" Value="#F0F0F0"/>
+                                            <Setter Property="Foreground" Value="#333"/>
+                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                            <Setter Property="Padding" Value="8,6"/>
+                                            <Setter Property="BorderBrush" Value="#CCC"/>
+                                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type DataGridCell}">
+                                            <Setter Property="Padding" Value="10,6"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                        </Style>
+                                    </DataGrid.Resources>
+                                    <DataGrid.Columns>
+                                        <DataGridCheckBoxColumn Header="✓" Binding="{Binding IsSelected}" Width="40"/>
+                                        <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="110"/>
+                                        <DataGridTextColumn Header="Version" Binding="{Binding Version}" Width="80"/>
+                                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                                        <DataGridTextColumn Header="State" Binding="{Binding State}" Width="100"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Border Background="#FFF" Opacity="0.95" Visibility="{Binding Visibility, ElementName=MigrationsEmptyBlock}" CornerRadius="4"/>
+                                <StackPanel x:Name="MigrationsEmptyBlock" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                    <TextBlock Text="🗂️" FontSize="36" HorizontalAlignment="Center" Opacity="0.25"/>
+                                    <TextBlock Text="No migrations loaded." Foreground="#888" FontStyle="Italic" FontSize="18" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                                    <TextBlock Text="Click 'Load Migrations' to begin." Foreground="#AAA" FontSize="14" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 24">
+                            <TextBlock Text="Action:" Width="120" VerticalAlignment="Center" Margin="0,0,24,0"/>
+                            <ComboBox x:Name="MigrationActionComboBox" Width="150" SelectedIndex="0" Margin="0,0,24,0" Padding="12,6">
+                                <ComboBoxItem Content="Migrate" />
+                                <ComboBoxItem Content="Undo" />
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 24">
+                            <TextBlock Text="Additional Params:" Width="120" VerticalAlignment="Center" Margin="0,0,24,0"/>
+                            <TextBox x:Name="MigrationsAdditionalParamsTextBox" Width="400" Padding="12,6"/>
+                        </StackPanel>
+                        <Button Content="Run Selected Scripts" Click="OnRunCherryPickClicked" Style="{StaticResource ModernButton}" HorizontalAlignment="Left" Margin="0,24,0,0"/>
+                        <TextBlock x:Name="MigrationsStatusBlock" Text="" TextWrapping="Wrap" Margin="0,24,0,0" Foreground="DarkGreen" FontFamily="Consolas" FontSize="12"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </TabItem>
+
+
+
+
+        <!-- Deploy Tab -->
+        <TabItem Header="🚀 Deploy">
+            <StackPanel Margin="28">
+                <GroupBox Header="Deploy Changes" Margin="0 0 0 28" Padding="24">
+                    <StackPanel Margin="0 0 0 28">
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                            <TextBlock Text="Source Env:" Width="120" VerticalAlignment="Center" Margin="0,0,24,0"/>
+                            <ComboBox x:Name="FlywaySourceEnvComboBox" Width="150" Margin="0,0,24,0" Padding="12,6"/>
+                            <TextBlock Text="Target Env:" Width="100" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="FlywayTargetEnvComboBox" Width="150" Padding="12,6"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 20 20 0">
+                            <TextBlock Text="Additional Params:" Width="120" VerticalAlignment="Center" Margin="0,0,24,0"/>
+                            <TextBox x:Name="FlywayParamsBox" Width="320" Padding="12,6"/>
+                        </StackPanel>
+                        <Button Content="Deploy" Click="OnDeployClicked" Style="{StaticResource ModernButton}" HorizontalAlignment="Left" Margin="0,24,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </TabItem>
+
+        <!-- Utilities Tab -->
+        <TabItem Header="🛠️ Utilities">
+            <StackPanel Margin="28" Orientation="Vertical">
+                <!-- Install Tools -->
+                <WrapPanel Margin="0 0 0 28">
+                    <Button Content="Install Flyway CLI" Click="OnInstallFlywayClisClicked" Style="{StaticResource ModernButton}" Margin="0,0,20,0"/>
+                    <Button Content="Install dbatools" Click="OnInstallDbatoolsClicked" Style="{StaticResource ModernButton}"/>
+                </WrapPanel>
+                
+
+                <!-- Reporting Section -->
+                <GroupBox Header="📝 Generate Report" Margin="0 0 0 28" Padding="24">
+                    <StackPanel Margin="0 0 0 28">
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                            <TextBlock Text="Environment:" Width="120" VerticalAlignment="Center" Margin="0,0,24,0"/>
+                            <ComboBox x:Name="ReportEnvironmentComboBox" Width="200" Padding="12,6"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                            <TextBlock Text="Check Env ID:" Width="120" VerticalAlignment="Center" Margin="0,0,24,0"/>
+                            <TextBox x:Name="ReportCheckEnvTextBox" Width="200" Padding="12,6"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Include in Report:" FontWeight="Bold" Margin="0 10 0 8"/>
+                        <StackPanel Orientation="Vertical" Margin="20 0 0 20">
+                            <CheckBox x:Name="ReportChangesCheckbox" Content="Changes" Margin="0 0 0 8"/>
+                            <CheckBox x:Name="ReportDriftCheckbox" Content="Drift" Margin="0 0 0 8"/>
+                            <CheckBox x:Name="ReportCodeCheckbox" Content="Code Analysis" Margin="0 0 0 8"/>
+                            <CheckBox x:Name="ReportDryRunCheckbox" Content="DryRun"/>
+                        </StackPanel>
+                        <Button Content="Generate Report" Click="OnGenerateReportClicked" Style="{StaticResource ModernButton}" HorizontalAlignment="Left" Margin="0,24,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </TabItem>
+
+        <!-- Persistent Project Path Panel at the bottom, aligned left -->
+        <Border Background="#F5F7FA" BorderBrush="#DDD" BorderThickness="1,0,0,0" Padding="8,4" DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                <TextBlock Text="Project Folder:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                <TextBox x:Name="FlywayConfigFileTextBox" Width="320" Margin="0,0,8,0"/>
+                <Button Content="Browse" Click="OnBrowseFlywayConfigClicked" Style="{StaticResource ModernButton}"/>
+                <Button Content="Confirm" Click="OnConfirmFlywayConfigClicked" Style="{StaticResource ModernButton}"/>
+            </StackPanel>
+        </Border>
+    </DockPanel>
+</UserControl>

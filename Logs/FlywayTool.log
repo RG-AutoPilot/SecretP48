@@ -1,0 +1,899 @@
+[2025-08-12 14:25:13] Generate Preview: Started. Command: pwsh.exe -ExecutionPolicy Bypass -Command "flyway '-diff.source=schemaModel' '-diff.target=migrations' '-diff.buildEnvironment=shadow' -workingDirectory="C:\PlugNPlay" -outputType=json diff"
+[2025-08-12 14:25:18] Generate Preview: Raw output: {
+  "error" : {
+    "errorCode" : "ERROR",
+    "message" : "Upgrade required: flyway diff is not supported by Community. If you would like to start a free Enterprise trial, please run auth -startEnterpriseTrial -IAgreeToTheEula. If you believe you should be logged in, run auth -IAgreeToTheEula or ensure licensing is set correctly.",
+    "cause" : null
+  }
+}
+
+[2025-08-12 14:25:18] Generate Preview: Flyway error: Upgrade required: flyway diff is not supported by Community. If you would like to start a free Enterprise trial, please run auth -startEnterpriseTrial -IAgreeToTheEula. If you believe you should be logged in, run auth -IAgreeToTheEula or ensure licensing is set correctly.
+[2025-08-12 14:28:06] Generate Preview: Started. Command: pwsh.exe -ExecutionPolicy Bypass -Command "flyway '-diff.source=schemaModel' '-diff.target=migrations' '-diff.buildEnvironment=shadow' -workingDirectory="C:\PlugNPlay" -outputType=json diff"
+[2025-08-12 14:28:26] Generate Preview: Raw output: {
+  "differences" : [ {
+    "id" : "rBK2wr3PuHh5NEuWaZObVV2DIe4",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "LoyaltyProgram",
+      "definition" : null
+    }
+  }, {
+    "id" : "KMRuJ2xM0vKGf4b7LQnfN_RYJ8Y",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "Order Details",
+      "definition" : null
+    }
+  }, {
+    "id" : "tob3Rb.FZc9bDNMU4njyOfXOsfw",
+    "differenceType" : "Add",
+    "objectType" : "Table",
+    "from" : {
+      "schema" : "dbo",
+      "name" : "PlugNPlayTable",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "FApt3Zowpzo_18tElWMTstLLGQ0",
+    "differenceType" : "Add",
+    "objectType" : "Table",
+    "from" : {
+      "schema" : "dbo",
+      "name" : "quickTest",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "PpHGjb02nDh6iS4MIzIhwe8ssYQ",
+    "differenceType" : "Delete",
+    "objectType" : "Procedure",
+    "from" : null,
+    "to" : {
+      "schema" : "Logistics",
+      "name" : "AddMaintenanceLog",
+      "definition" : null
+    }
+  }, {
+    "id" : "LRvCgGZnTE_ZUogJF0hX_GFt5_A",
+    "differenceType" : "Delete",
+    "objectType" : "Procedure",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "Sales by Year",
+      "definition" : null
+    }
+  }, {
+    "id" : "7_FUFxFxwlZ_f5wDmzxLujU6S2Y",
+    "differenceType" : "Delete",
+    "objectType" : "Procedure",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "SalesByCategory",
+      "definition" : null
+    }
+  }, {
+    "id" : "KwEU0MNrbwifkMpnv_AOd8jJoE4",
+    "differenceType" : "Delete",
+    "objectType" : "Procedure",
+    "from" : null,
+    "to" : {
+      "schema" : "dbo",
+      "name" : "spTest",
+      "definition" : null
+    }
+  }, {
+    "id" : "pc3Tf_lrBEFeUROW3LHo77wFVlw",
+    "differenceType" : "Delete",
+    "objectType" : "View",
+    "from" : null,
+    "to" : {
+      "schema" : "Logistics",
+      "name" : "FlightMaintenanceStatus",
+      "definition" : null
+    }
+  }, {
+    "id" : "3Pe.zJojDsDva7p0tOhX19SwUNU",
+    "differenceType" : "Delete",
+    "objectType" : "View",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "CustomerOrdersView",
+      "definition" : null
+    }
+  }, {
+    "id" : "rWdMRIrzPW0mpvF2ZsMuI2gDphI",
+    "differenceType" : "Delete",
+    "objectType" : "View",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "CustomersFeedbackSummary",
+      "definition" : null
+    }
+  }, {
+    "id" : "9hl7siQqNNl1gLIQvOihL.LLmvs",
+    "differenceType" : "Delete",
+    "objectType" : "View",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "Order Details Extended",
+      "definition" : null
+    }
+  }, {
+    "id" : "IfmdlDFpmVrL74H8TU6FrNtdTDU",
+    "differenceType" : "Delete",
+    "objectType" : "View",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "Order Subtotals",
+      "definition" : null
+    }
+  }, {
+    "id" : "0i.TSOVeplncNfOllCw0_bX3FKg",
+    "differenceType" : "Delete",
+    "objectType" : "View",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "Sales Totals by Amount",
+      "definition" : null
+    }
+  }, {
+    "id" : "i5j1oyzubJ7zdzI2O7m7sN9_EqE",
+    "differenceType" : "Delete",
+    "objectType" : "View",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "Sales by Category",
+      "definition" : null
+    }
+  }, {
+    "id" : "BF1G35C45_udlD8s8tV673IVCCc",
+    "differenceType" : "Delete",
+    "objectType" : "View",
+    "from" : null,
+    "to" : {
+      "schema" : "Sales",
+      "name" : "Summary of Sales by Quarter",
+      "definition" : null
+    }
+  } ],
+  "sourcePreparationInfo" : null,
+  "targetPreparationInfo" : {
+    "sourceType" : "migrations",
+    "provisioner" : "clean",
+    "migrationState" : {
+      "pending" : 0,
+      "applied" : 4,
+      "failed" : 0,
+      "total" : 6
+    },
+    "reprovisioned" : false,
+    "targetSchemaVersion" : "003",
+    "migrationsExecuted" : 0
+  }
+}
+
+[2025-08-12 14:28:26] Generate Preview Exception: Cannot access child value on Newtonsoft.Json.Linq.JValue.
+[2025-08-12 14:46:27] Generate Preview: Started. Command: pwsh.exe -ExecutionPolicy Bypass -Command "flyway '-diff.source=schemaModel' '-diff.target=migrations' '-diff.buildEnvironment=shadow' -workingDirectory="C:\PlugNPlay" -outputType=json diff"
+[2025-08-12 14:46:46] Generate Preview: Raw output: {
+  "differences" : [ {
+    "id" : "rBK2wr3PuHh5NEuWaZObVV2DIe4",
+    "differenceType" : "Add",
+    "objectType" : "Table",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "LoyaltyProgram",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "KMRuJ2xM0vKGf4b7LQnfN_RYJ8Y",
+    "differenceType" : "Add",
+    "objectType" : "Table",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Order Details",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "IRUgzI8NOHLtRtRA6RQQvOjk.Dg",
+    "differenceType" : "Add",
+    "objectType" : "Table",
+    "from" : {
+      "schema" : "dbo",
+      "name" : "huxTable50",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "PpHGjb02nDh6iS4MIzIhwe8ssYQ",
+    "differenceType" : "Add",
+    "objectType" : "Procedure",
+    "from" : {
+      "schema" : "Logistics",
+      "name" : "AddMaintenanceLog",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "LRvCgGZnTE_ZUogJF0hX_GFt5_A",
+    "differenceType" : "Add",
+    "objectType" : "Procedure",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Sales by Year",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "7_FUFxFxwlZ_f5wDmzxLujU6S2Y",
+    "differenceType" : "Add",
+    "objectType" : "Procedure",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "SalesByCategory",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "KwEU0MNrbwifkMpnv_AOd8jJoE4",
+    "differenceType" : "Add",
+    "objectType" : "Procedure",
+    "from" : {
+      "schema" : "dbo",
+      "name" : "spTest",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "pc3Tf_lrBEFeUROW3LHo77wFVlw",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Logistics",
+      "name" : "FlightMaintenanceStatus",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "3Pe.zJojDsDva7p0tOhX19SwUNU",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "CustomerOrdersView",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "rWdMRIrzPW0mpvF2ZsMuI2gDphI",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "CustomersFeedbackSummary",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "9hl7siQqNNl1gLIQvOihL.LLmvs",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Order Details Extended",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "IfmdlDFpmVrL74H8TU6FrNtdTDU",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Order Subtotals",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "0i.TSOVeplncNfOllCw0_bX3FKg",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Sales Totals by Amount",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "i5j1oyzubJ7zdzI2O7m7sN9_EqE",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Sales by Category",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "BF1G35C45_udlD8s8tV673IVCCc",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Summary of Sales by Quarter",
+      "definition" : null
+    },
+    "to" : null
+  } ],
+  "sourcePreparationInfo" : null,
+  "targetPreparationInfo" : {
+    "sourceType" : "migrations",
+    "provisioner" : "clean",
+    "migrationState" : {
+      "pending" : 0,
+      "applied" : 5,
+      "failed" : 0,
+      "total" : 8
+    },
+    "reprovisioned" : false,
+    "targetSchemaVersion" : "004",
+    "migrationsExecuted" : 0
+  }
+}
+
+[2025-08-12 14:46:46] Generate Preview: Found 15 changes.
+[2025-08-12 14:47:06] Generate Preview: Started. Command: pwsh.exe -ExecutionPolicy Bypass -Command "flyway '-diff.source=schemaModel' '-diff.target=migrations' '-diff.buildEnvironment=shadow' -workingDirectory="C:\PlugNPlay" -outputType=json diff"
+[2025-08-12 14:47:24] Generate Preview: Raw output: {
+  "differences" : [ {
+    "id" : "y7y.EDZfpdzO7Dh45lNcpq_HZMI",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "Logistics",
+      "name" : "EmployeeTerritories",
+      "definition" : null
+    }
+  }, {
+    "id" : "rBK2wr3PuHh5NEuWaZObVV2DIe4",
+    "differenceType" : "Add",
+    "objectType" : "Table",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "LoyaltyProgram",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "KMRuJ2xM0vKGf4b7LQnfN_RYJ8Y",
+    "differenceType" : "Add",
+    "objectType" : "Table",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Order Details",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "VLdp3YXf_Evek5O9W22Nsin3BNI",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "dbo",
+      "name" : "AlexTest",
+      "definition" : null
+    }
+  }, {
+    "id" : "tob3Rb.FZc9bDNMU4njyOfXOsfw",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "dbo",
+      "name" : "PlugNPlayTable",
+      "definition" : null
+    }
+  }, {
+    "id" : "3H5lBiL_2urJ3Ga9cLrKWM4cZ8w",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "dbo",
+      "name" : "SocialMedia",
+      "definition" : null
+    }
+  }, {
+    "id" : "ToN9wkgA.E1gihEWuAFQtQkAAp0",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "dbo",
+      "name" : "TableTest",
+      "definition" : null
+    }
+  }, {
+    "id" : "zYYXszbSmF9qIZ6j1X8p78euW6U",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "dbo",
+      "name" : "huxtest",
+      "definition" : null
+    }
+  }, {
+    "id" : "FApt3Zowpzo_18tElWMTstLLGQ0",
+    "differenceType" : "Delete",
+    "objectType" : "Table",
+    "from" : null,
+    "to" : {
+      "schema" : "dbo",
+      "name" : "quickTest",
+      "definition" : null
+    }
+  }, {
+    "id" : "PpHGjb02nDh6iS4MIzIhwe8ssYQ",
+    "differenceType" : "Add",
+    "objectType" : "Procedure",
+    "from" : {
+      "schema" : "Logistics",
+      "name" : "AddMaintenanceLog",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "LRvCgGZnTE_ZUogJF0hX_GFt5_A",
+    "differenceType" : "Add",
+    "objectType" : "Procedure",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Sales by Year",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "7_FUFxFxwlZ_f5wDmzxLujU6S2Y",
+    "differenceType" : "Add",
+    "objectType" : "Procedure",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "SalesByCategory",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "KwEU0MNrbwifkMpnv_AOd8jJoE4",
+    "differenceType" : "Add",
+    "objectType" : "Procedure",
+    "from" : {
+      "schema" : "dbo",
+      "name" : "spTest",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "pc3Tf_lrBEFeUROW3LHo77wFVlw",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Logistics",
+      "name" : "FlightMaintenanceStatus",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "3Pe.zJojDsDva7p0tOhX19SwUNU",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "CustomerOrdersView",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "rWdMRIrzPW0mpvF2ZsMuI2gDphI",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "CustomersFeedbackSummary",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "9hl7siQqNNl1gLIQvOihL.LLmvs",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Order Details Extended",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "IfmdlDFpmVrL74H8TU6FrNtdTDU",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Order Subtotals",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "0i.TSOVeplncNfOllCw0_bX3FKg",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Sales Totals by Amount",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "i5j1oyzubJ7zdzI2O7m7sN9_EqE",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Sales by Category",
+      "definition" : null
+    },
+    "to" : null
+  }, {
+    "id" : "BF1G35C45_udlD8s8tV673IVCCc",
+    "differenceType" : "Add",
+    "objectType" : "View",
+    "from" : {
+      "schema" : "Sales",
+      "name" : "Summary of Sales by Quarter",
+      "definition" : null
+    },
+    "to" : null
+  } ],
+  "sourcePreparationInfo" : null,
+  "targetPreparationInfo" : {
+    "sourceType" : "migrations",
+    "provisioner" : "clean",
+    "migrationState" : {
+      "pending" : 0,
+      "applied" : 5,
+      "failed" : 0,
+      "total" : 8
+    },
+    "reprovisioned" : false,
+    "targetSchemaVersion" : "004",
+    "migrationsExecuted" : 0
+  }
+}
+
+[2025-08-12 14:47:24] Generate Preview: Found 21 changes.
+[2025-08-12 14:48:00] Generate Migration: Started. Command: flyway generate -changes="y7y.EDZfpdzO7Dh45lNcpq_HZMI,rBK2wr3PuHh5NEuWaZObVV2DIe4,KMRuJ2xM0vKGf4b7LQnfN_RYJ8Y,VLdp3YXf_Evek5O9W22Nsin3BNI,tob3Rb.FZc9bDNMU4njyOfXOsfw,3H5lBiL_2urJ3Ga9cLrKWM4cZ8w,ToN9wkgA.E1gihEWuAFQtQkAAp0,zYYXszbSmF9qIZ6j1X8p78euW6U,FApt3Zowpzo_18tElWMTstLLGQ0,PpHGjb02nDh6iS4MIzIhwe8ssYQ,LRvCgGZnTE_ZUogJF0hX_GFt5_A,7_FUFxFxwlZ_f5wDmzxLujU6S2Y,KwEU0MNrbwifkMpnv_AOd8jJoE4,pc3Tf_lrBEFeUROW3LHo77wFVlw,3Pe.zJojDsDva7p0tOhX19SwUNU,rWdMRIrzPW0mpvF2ZsMuI2gDphI,9hl7siQqNNl1gLIQvOihL.LLmvs,IfmdlDFpmVrL74H8TU6FrNtdTDU,0i.TSOVeplncNfOllCw0_bX3FKg,i5j1oyzubJ7zdzI2O7m7sN9_EqE,BF1G35C45_udlD8s8tV673IVCCc" -description="Messin" -workingDirectory="C:\PlugNPlay" -types=versioned,undo
+[2025-08-12 14:48:08] Generate Migration: Output: Flyway Enterprise Edition 11.11.0-rc512 by Redgate
+
+See release notes here: https://rd.gt/416ObMi
+Using diff artifact: C:\Users\Huxley.Kendell\AppData\Local\Temp\flyway.artifact.diff
+Database: jdbc:h2:mem:db (H2 2.3)
+Database: jdbc:h2:mem:db (H2 2.3)
+Generating versioned migration: C:\PlugNPlay\migrations\V005__Messin.sql
+Generating undo migration: C:\PlugNPlay\migrations\U005__Messin.sql
+Generated: C:\PlugNPlay\migrations\U005__Messin.sql
+ Warning: High: TableDropDataLoss [quickTest] - This deployment drops the table [dbo].[quickTest]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [huxtest] - This deployment drops the table [dbo].[huxtest]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [TableTest] - This deployment drops the table [dbo].[TableTest]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [SocialMedia] - This deployment drops the table [dbo].[SocialMedia]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [PlugNPlayTable] - This deployment drops the table [dbo].[PlugNPlayTable]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [AlexTest] - This deployment drops the table [dbo].[AlexTest]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [EmployeeTerritories] - This deployment drops the table [Logistics].[EmployeeTerritories]. You may want to take additional steps to preserve the data in the table.
+Generated: C:\PlugNPlay\migrations\V005__Messin.sql
+ Warning: High: TableDropDataLoss [quickTest] - This deployment drops the table [dbo].[quickTest]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [huxtest] - This deployment drops the table [dbo].[huxtest]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [TableTest] - This deployment drops the table [dbo].[TableTest]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [SocialMedia] - This deployment drops the table [dbo].[SocialMedia]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [PlugNPlayTable] - This deployment drops the table [dbo].[PlugNPlayTable]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [AlexTest] - This deployment drops the table [dbo].[AlexTest]. You may want to take additional steps to preserve the data in the table.
+ Warning: High: TableDropDataLoss [EmployeeTerritories] - This deployment drops the table [Logistics].[EmployeeTerritories]. You may want to take additional steps to preserve the data in the table.
+
+[2025-08-12 14:48:08] Generate Migration: Error: 
+[2025-08-12 14:48:15] Generate Preview: Started. Command: pwsh.exe -ExecutionPolicy Bypass -Command "flyway '-diff.source=schemaModel' '-diff.target=migrations' '-diff.buildEnvironment=shadow' -workingDirectory="C:\PlugNPlay" -outputType=json diff"
+[2025-08-12 14:48:34] Generate Preview: Raw output: {
+  "differences" : [ ],
+  "sourcePreparationInfo" : null,
+  "targetPreparationInfo" : {
+    "sourceType" : "migrations",
+    "provisioner" : "clean",
+    "migrationState" : {
+      "pending" : 1,
+      "applied" : 5,
+      "failed" : 0,
+      "total" : 10
+    },
+    "reprovisioned" : false,
+    "targetSchemaVersion" : "005",
+    "migrationsExecuted" : 1
+  }
+}
+
+[2025-08-12 14:48:34] Generate Preview: No differences found.
+[2025-08-12 14:50:56] Generate Report: Started. Command: flyway check -environment="Prod" -workingDirectory="C:\PlugNPlay" -cleanDisabled=false -check.buildEnvironment="Check" -changes -drift -dryrun
+[2025-08-12 14:51:50] Generate Report: Output: Flyway Enterprise Edition 11.11.0-rc512 by Redgate
+
+See release notes here: https://rd.gt/416ObMi
+Changes - Calculating changes using build environment
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotProd;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Schema history table [AutopilotProd].[Customers].[flyway_schema_history] does not exist yet
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Build database migrations are not a subsequence of cherryPick migrations: []
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+Successfully cleaned schema [Customers] (execution time 00:00.278s)
+Successfully cleaned schema [dbo] (execution time 00:00.116s)
+Successfully cleaned schema [Sales] (execution time 00:01.029s)
+Successfully cleaned schema [Sales] (execution time 00:00.151s)
+Successfully cleaned schema [Operation] (execution time 00:00.162s)
+Successfully cleaned schema [Logistics] (execution time 00:00.160s)
+Successfully cleaned schema [dbo] (execution time 00:00.069s)
+Successfully cleaned schema [Customers] (execution time 00:00.072s)
+Successfully dropped post-schema database level objects (execution time 00:00.171s)
+Successfully dropped schema [Customers] (execution time 00:00.091s)
+WARNING: Unable to drop schema [dbo]. It was cleaned instead.
+Successfully dropped schema [Logistics] (execution time 00:00.091s)
+Successfully dropped schema [Operation] (execution time 00:00.097s)
+Successfully dropped schema [Sales] (execution time 00:00.122s)
+Result of snapshot written to C:\Users\Huxley.Kendell\AppData\Local\Temp\flyway-check3973017673313949190.model
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Schema history table [AutopilotCheck].[Customers].[flyway_schema_history] does not exist yet
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Creating schema [Customers] ...
+Creating Schema History table [AutopilotCheck].[Customers].[flyway_schema_history] ...
+Current version of schema [Customers]: null
+WARNING: outOfOrder mode is active. Migration of schema [Customers] may not be reproducible.
+Migrating schema [Customers] to version "001 - baseline"
+Creating schemas
+Creating [Sales].[Customers]
+Creating primary key [PK_Customers] on [Sales].[Customers]
+Creating index [City] on [Sales].[Customers]
+Creating index [CompanyName] on [Sales].[Customers]
+Creating index [PostalCode] on [Sales].[Customers]
+Creating index [Region] on [Sales].[Customers]
+Creating [Sales].[CustomersFeedback]
+Creating primary key [PK__Customer__6A4BEDF61A949274] on [Sales].[CustomersFeedback]
+Creating [Logistics].[Flight]
+Creating primary key [PK__Flight__8A9E148E9A8ED149] on [Logistics].[Flight]
+Creating [Logistics].[MaintenanceLog]
+Creating primary key [PK__Maintena__5E5499A8A7E7CD24] on [Logistics].[MaintenanceLog]
+Creating [Sales].[Orders]
+Creating primary key [PK_Orders] on [Sales].[Orders]
+Creating index [CustomerID] on [Sales].[Orders]
+Creating index [CustomersOrders] on [Sales].[Orders]
+Creating index [EmployeeID] on [Sales].[Orders]
+Creating index [EmployeesOrders] on [Sales].[Orders]
+Creating index [OrderDate] on [Sales].[Orders]
+Creating index [ShippedDate] on [Sales].[Orders]
+Creating index [ShipPostalCode] on [Sales].[Orders]
+Creating index [ShippersOrders] on [Sales].[Orders]
+Creating [Sales].[OrderAuditLog]
+Creating primary key [PK__OrderAud__A17F23B8298306B2] on [Sales].[OrderAuditLog]
+Creating [Operation].[Employees]
+Creating primary key [PK_Employees] on [Operation].[Employees]
+Creating index [LastName] on [Operation].[Employees]
+Creating index [PostalCode] on [Operation].[Employees]
+Creating [Logistics].[EmployeeTerritories]
+Creating primary key [PK_EmployeeTerritories] on [Logistics].[EmployeeTerritories]
+Creating [Sales].[Territories]
+Creating primary key [PK_Territories] on [Sales].[Territories]
+Creating [Sales].[Order Details]
+Creating primary key [PK_Order_Details] on [Sales].[Order Details]
+Creating index [OrderID] on [Sales].[Order Details]
+Creating index [OrdersOrder_Details] on [Sales].[Order Details]
+Creating index [ProductID] on [Sales].[Order Details]
+Creating index [ProductsOrder_Details] on [Sales].[Order Details]
+Creating [Operation].[Products]
+Creating primary key [PK_Products] on [Operation].[Products]
+Creating index [CategoriesProducts] on [Operation].[Products]
+Creating index [CategoryID] on [Operation].[Products]
+Creating index [ProductName] on [Operation].[Products]
+Creating index [SupplierID] on [Operation].[Products]
+Creating index [SuppliersProducts] on [Operation].[Products]
+Creating [Logistics].[Shippers]
+Creating primary key [PK_Shippers] on [Logistics].[Shippers]
+Creating [Operation].[Categories]
+Creating primary key [PK_Categories] on [Operation].[Categories]
+Creating index [CategoryName] on [Operation].[Categories]
+Creating [Logistics].[Suppliers]
+Creating primary key [PK_Suppliers] on [Logistics].[Suppliers]
+Creating index [CompanyName] on [Logistics].[Suppliers]
+Creating index [PostalCode] on [Logistics].[Suppliers]
+Creating [Logistics].[Region]
+Creating primary key [PK_Region] on [Logistics].[Region]
+Creating [Sales].[CustomerOrdersView]
+Creating [Sales].[CustomersFeedbackSummary]
+Creating [Logistics].[FlightMaintenanceStatus]
+Creating [Logistics].[UpdateAvailableSeats]
+Creating [Logistics].[AddMaintenanceLog]
+Creating [Customers].[RecordFeedback]
+Creating [Sales].[Order Details Extended]
+Creating [Sales].[Order Subtotals]
+Creating [Sales].[Sales by Category]
+Creating [Sales].[Sales Totals by Amount]
+Creating [Sales].[Summary of Sales by Quarter]
+Creating [Sales].[Sales by Year]
+Creating [Sales].[SalesByCategory]
+Creating [Sales].[DiscountCode]
+Creating primary key [PK__Discount__E43F6DF6CA2BF14E] on [Sales].[DiscountCode]
+Adding constraints to [Sales].[DiscountCode]
+Creating [Logistics].[FlightRoute]
+Creating primary key [PK__FlightRo__80979AADC83FDFDB] on [Logistics].[FlightRoute]
+Creating [Sales].[CustomerDemographics]
+Creating primary key [PK_CustomerDemographics] on [Sales].[CustomerDemographics]
+Creating [Sales].[LoyaltyProgram]
+Creating primary key [PK__LoyaltyP__7525603848DEBC46] on [Sales].[LoyaltyProgram]
+Adding constraints to [Operation].[Employees]
+Adding constraints to [Operation].[Products]
+Adding constraints to [Sales].[Order Details]
+Adding constraints to [Sales].[CustomersFeedback]
+Adding constraints to [Sales].[DiscountCode]
+Adding foreign keys to [Logistics].[EmployeeTerritories]
+Adding foreign keys to [Sales].[Territories]
+Adding foreign keys to [Sales].[Orders]
+Adding foreign keys to [Operation].[Products]
+Adding foreign keys to [Operation].[Employees]
+Adding foreign keys to [Sales].[Order Details]
+Adding foreign keys to [Sales].[CustomersFeedback]
+Adding foreign keys to [Sales].[OrderAuditLog]
+Adding foreign keys to [Logistics].[MaintenanceLog]
+Disabling constraints on [Logistics].[EmployeeTerritories]
+Disabling constraints on [Sales].[Territories]
+Disabling constraints on [Sales].[Orders]
+Disabling constraints on [Operation].[Products]
+Disabling constraints on [Operation].[Employees]
+Disabling constraints on [Sales].[Order Details]
+Disabling constraints on [Sales].[CustomersFeedback]
+Disabling constraints on [Sales].[OrderAuditLog]
+Migrating schema [Customers] to version "002 - Welcome"
+Pretending to Migrate
+Migrating schema [Customers] to version "003 - QuickTest"
+Altering [Sales].[Customers]
+Creating [dbo].[TableTest]
+Creating [dbo].[spTest]
+Refreshing [Sales].[CustomerOrdersView]
+Refreshing [Sales].[CustomersFeedbackSummary]
+Refreshing [Sales].[Sales Totals by Amount]
+Creating [dbo].[AlexTest]
+Creating [dbo].[SocialMedia]
+Creating [dbo].[huxtest]
+Migrating schema [Customers] to version "004 - AutoScriptInsertDate"
+Dropping foreign keys from [Sales].[Order Details]
+Dropping constraints from [Sales].[Order Details]
+Dropping constraints from [Sales].[Order Details]
+Dropping constraints from [Sales].[Order Details]
+Dropping constraints from [Sales].[LoyaltyProgram]
+Dropping constraints from [Sales].[Order Details]
+Dropping constraints from [Sales].[LoyaltyProgram]
+Dropping constraints from [Sales].[Order Details]
+Dropping constraints from [Sales].[Order Details]
+Dropping constraints from [Sales].[Order Details]
+Dropping index [OrderID] from [Sales].[Order Details]
+Dropping index [OrdersOrder_Details] from [Sales].[Order Details]
+Dropping index [ProductID] from [Sales].[Order Details]
+Dropping index [ProductsOrder_Details] from [Sales].[Order Details]
+Dropping [Sales].[LoyaltyProgram]
+Dropping [Sales].[SalesByCategory]
+Dropping [Sales].[Sales by Year]
+Dropping [Sales].[Summary of Sales by Quarter]
+Dropping [Sales].[Sales Totals by Amount]
+Dropping [Sales].[Sales by Category]
+Dropping [Sales].[Order Subtotals]
+Dropping [Sales].[Order Details Extended]
+Dropping [Logistics].[AddMaintenanceLog]
+Dropping [Logistics].[FlightMaintenanceStatus]
+Dropping [Sales].[CustomersFeedbackSummary]
+Dropping [Sales].[CustomerOrdersView]
+Dropping [dbo].[spTest]
+Dropping [Sales].[Order Details]
+Creating [dbo].[PlugNPlayTable]
+Creating [dbo].[quickTest]
+Migrating schema [Customers] to version "005 - Messin"
+Dropping foreign keys from [Logistics].[EmployeeTerritories]
+Dropping constraints from [Logistics].[EmployeeTerritories]
+Dropping [dbo].[quickTest]
+Dropping [dbo].[huxtest]
+Dropping [dbo].[TableTest]
+Dropping [dbo].[SocialMedia]
+Dropping [dbo].[PlugNPlayTable]
+Dropping [dbo].[AlexTest]
+Dropping [Logistics].[EmployeeTerritories]
+Creating [Sales].[LoyaltyProgram]
+Creating primary key [PK__LoyaltyP__7525603848DEBC46] on [Sales].[LoyaltyProgram]
+Creating [Sales].[Order Details]
+Creating primary key [PK_Order_Details] on [Sales].[Order Details]
+Creating index [OrderID] on [Sales].[Order Details]
+Creating index [OrdersOrder_Details] on [Sales].[Order Details]
+Creating index [ProductID] on [Sales].[Order Details]
+Creating index [ProductsOrder_Details] on [Sales].[Order Details]
+Creating [Logistics].[AddMaintenanceLog]
+Creating [Sales].[Order Subtotals]
+Creating [Sales].[Sales by Year]
+Creating [Sales].[SalesByCategory]
+Creating [Logistics].[FlightMaintenanceStatus]
+Creating [Sales].[CustomerOrdersView]
+Creating [Sales].[CustomersFeedbackSummary]
+Creating [Sales].[Order Details Extended]
+Creating [Sales].[Sales by Category]
+Creating [Sales].[Sales Totals by Amount]
+Creating [Sales].[Summary of Sales by Quarter]
+Creating [dbo].[spTest]
+Adding constraints to [Sales].[Order Details]
+Adding foreign keys to [Sales].[Order Details]
+Disabling constraints on [Sales].[Order Details]
+Successfully applied 5 migrations to schema [Customers], now at version v005 (execution time 00:00.829s)
+Change report summary:
+Added: 36        Deleted: 0        Modified: 0
+
+Drift - Calculating drift on target using build environment
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotProd;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Schema history table [AutopilotProd].[Customers].[flyway_schema_history] does not exist yet
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Build database migrations are not a subsequence of cherryPick migrations: []
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotCheck;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+Successfully cleaned schema [Customers] (execution time 00:00.228s)
+Successfully cleaned schema [dbo] (execution time 00:00.096s)
+Successfully cleaned schema [Sales] (execution time 00:01.233s)
+Successfully cleaned schema [Sales] (execution time 00:00.077s)
+Successfully cleaned schema [Operation] (execution time 00:00.440s)
+Successfully cleaned schema [Logistics] (execution time 00:00.477s)
+Successfully cleaned schema [dbo] (execution time 00:00.309s)
+Successfully cleaned schema [Customers] (execution time 00:00.343s)
+Successfully dropped post-schema database level objects (execution time 00:00.147s)
+Successfully dropped schema [Customers] (execution time 00:00.082s)
+WARNING: Unable to drop schema [dbo]. It was cleaned instead.
+Successfully dropped schema [Logistics] (execution time 00:00.065s)
+Successfully dropped schema [Operation] (execution time 00:00.093s)
+Successfully dropped schema [Sales] (execution time 00:00.098s)
+Drift report summary:
+Added: 0        Deleted: 0        Modified: 0
+
+Database: jdbc:sqlserver://localhost:1433;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=AutopilotProd;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite; (Microsoft SQL Server 16.0)
+=================================================================================================================================
+Dry Run: Database will NOT be modified. The following messages only represent what would happen in a normal Flyway migration run.
+=================================================================================================================================
+Schema history table [AutopilotProd].[Customers].[flyway_schema_history] does not exist yet
+Creating schema [Customers] ...
+Current version of schema [Customers]: null
+WARNING: outOfOrder mode is active. Migration of schema [Customers] may not be reproducible.
+Migrating schema [Customers] to version "001 - baseline"
+Migrating schema [Customers] to version "002 - Welcome"
+Migrating schema [Customers] to version "003 - QuickTest"
+Migrating schema [Customers] to version "004 - AutoScriptInsertDate"
+Migrating schema [Customers] to version "005 - Messin"
+Successfully applied 5 migrations to schema [Customers], now at version v005 (execution time 00:00.010s)
+A Flyway report has been generated here: C:\PlugNPlay\report.html
+
+[2025-08-12 14:51:50] Generate Report: Error: ERROR: Failed to execute operation in non-transactional context. Please restore backups and roll back database and code!
+ERROR: Failed to execute operation in non-transactional context. Please restore backups and roll back database and code!
+
+[2025-08-12 14:52:00] Generate Report: Started. Command: flyway check -environment="Prod" -workingDirectory="C:\PlugNPlay" -cleanDisabled=false -check.buildEnvironment="Check" -changes -drift -dryrun
